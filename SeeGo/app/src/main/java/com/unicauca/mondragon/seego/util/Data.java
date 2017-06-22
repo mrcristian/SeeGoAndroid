@@ -40,4 +40,15 @@ public class Data {
         return apartamentos;
     }
 
+    public static Apartamento getApartamento(int pos)
+    {
+        if(apartamentos != null && pos < apartamentos.size()) {
+            return apartamentos.get(pos);
+        }
+        return null;
+    }
+
+    public static List<Comentario> getComentarios() {
+        return comentarios;
+    }
 }

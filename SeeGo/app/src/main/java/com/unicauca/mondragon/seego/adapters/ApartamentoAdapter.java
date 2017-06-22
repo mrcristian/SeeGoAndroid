@@ -2,7 +2,9 @@ package com.unicauca.mondragon.seego.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.unicauca.mondragon.seego.DetalleActivity;
 import com.unicauca.mondragon.seego.R;
 import com.unicauca.mondragon.seego.databinding.TemplateApartamentoBinding;
 import com.unicauca.mondragon.seego.models.Apartamento;
@@ -25,11 +28,13 @@ public class ApartamentoAdapter extends RecyclerView.Adapter<ApartamentoAdapter.
     OnApartamentoListener listener;
     List<Apartamento> data;
     LayoutInflater inflater;
+    Activity padre;
 
     public ApartamentoAdapter(LayoutInflater inflater, List<Apartamento> data,OnApartamentoListener listener ) {
         this.listener = listener;
         this.data = data;
         this.inflater = inflater;
+        this.padre = ((Fragment)listener).getActivity();
     }
 
     @Override
@@ -51,17 +56,21 @@ public class ApartamentoAdapter extends RecyclerView.Adapter<ApartamentoAdapter.
         Log.d("m2","Me Comenta");
     }
     public void clickContact(){
-        Log.d("m3","Me Contacta");
+        //String mensaje = "Contacte al propietario mediante"+listener.onApartamentoClick(R.id.);
+        //Toast toast = Toast.makeText(this,"Contacte")
     }
     public void clickDetails(){
-        Log.d("m4","Me Detalla");
+        Intent intent = new Intent(this.padre,DetalleActivity.class);
+        padre.startActivity(intent);
     }
     @Override
     public int getItemCount() {
         return data.size();
     }
 
-    public void onItemClick(int position){listener.onApartamentoClick(position);}
+    public void onItemClick(int position){
+        listener.onApartamentoClick(position);
+    }
 
     public interface OnApartamentoListener{
         void onApartamentoClick(int position);
