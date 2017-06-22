@@ -7,6 +7,7 @@ package com.unicauca.mondragon.seego.models;
 public class Estudiante {
     private String _id,user,pass,tipo,noIdentificacion,nombre,apellido,direccion,telefono,ciudadOrigen;
 
+    public Estudiante(){};
     public Estudiante(String _id, String user, String pass, String tipo,
                       String noIdentificacion, String nombre, String apellido,
                       String direccion, String telefono, String ciudadOrigen) {

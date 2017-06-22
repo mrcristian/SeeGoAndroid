@@ -4,4 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="details">Detalles</string>
+    <string name="errorServidor">Fallo al conectarse al servidor</string>
+    <string name="errorRegistroUsuario">Error al registrar usuario</string>
+    <string name="RegistroExitoso">Registro Exitoso</string>
+    <string name="UsuarioInvalido">El usuario registrado no es valido</string>
+    <string name="invalidoPassContra">No coinciden el password o contraseña</string>
 </resources>
