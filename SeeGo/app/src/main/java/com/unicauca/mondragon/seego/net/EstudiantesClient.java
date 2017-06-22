@@ -1,7 +1,6 @@
 package com.unicauca.mondragon.seego.net;
 
 import com.unicauca.mondragon.seego.models.Estudiante;
-import com.unicauca.mondragon.seego.models.User;
 import com.unicauca.mondragon.seego.models.Usuario;
 
 import retrofit2.Call;
@@ -18,9 +17,8 @@ public interface EstudiantesClient {
     Call<RegistroResponse> registrar(@Body Estudiante estudiante);
 
     @POST("estudiantes/login")
-    Call<SimpleResponse> login(@Body Usuario usuario);
+    Call<LoginResponse> login(@Body Usuario usuario);
 
-    //@POST("auth/token")
-    //Call<LoginCredentials> login(@Body User model);
+
 
 }

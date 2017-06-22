@@ -1,5 +1,6 @@
 package com.unicauca.mondragon.seego.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ public class Apartamento {
     private String _id,size,ubicacion,descripcion,serviciosBasicos,internet,alimentacion,tv,visible,imagen;
     //Comentarios
     private int interesados;
-    private List<Comentario> comentarios;
+    private ArrayList<Comentario> comentarios;
 
     public Apartamento(String idPropietario, String telefono, String correo,
                        int costo, String _id, String size, String ubicacion,
                        String descripcion, String serviciosBasicos, String internet,
                        String alimentacion, String tv, String visible, String imagen,
-                       int interesados, List<Comentario> comentarios) {
+                       int interesados, ArrayList<Comentario> comentarios) {
         this.idPropietario = idPropietario;
         this.telefono = telefono;
         this.correo = correo;
@@ -159,11 +160,11 @@ public class Apartamento {
         this.interesados = interesados;
     }
 
-    public List<Comentario> getComentarios() {
+    public ArrayList<Comentario> getComentarios() {
         return comentarios;
     }
 
-    public void setComentarios(List<Comentario> comentarios) {
+    public void setComentarios(ArrayList<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
 }

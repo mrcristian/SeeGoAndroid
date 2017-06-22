@@ -13,6 +13,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -55,13 +55,20 @@ public class ApartamentoAdapter extends RecyclerView.Adapter<ApartamentoAdapter.
     public void clickComment(){
         Log.d("m2","Me Comenta");
     }
-    public void clickContact(){
-        //String mensaje = "Contacte al propietario mediante"+listener.onApartamentoClick(R.id.);
-        //Toast toast = Toast.makeText(this,"Contacte")
+    public void clickContact(int pos){
+        Apartamento aux = data.get(pos);
+        Toast.makeText(this.padre,"Contacte al propieatario mediate el correo: "+aux.getCorreo()+" y el telefono: "+aux.getTelefono(),Toast.LENGTH_LONG).show();
     }
-    public void clickDetails(){
+    public void clickDetails(int pos){
         Intent intent = new Intent(this.padre,DetalleActivity.class);
+
+        intent.putExtra("pos",pos);
         padre.startActivity(intent);
+    }
+
+    public void setData(List<Apartamento> apartamentos) {
+        this.data = apartamentos;
+        this.notifyDataSetChanged();
     }
     @Override
     public int getItemCount() {
@@ -69,7 +76,10 @@ public class ApartamentoAdapter extends RecyclerView.Adapter<ApartamentoAdapter.
     }
 
     public void onItemClick(int position){
-        listener.onApartamentoClick(position);
+        Intent intent = new Intent(this.padre,DetalleActivity.class);
+
+        intent.putExtra("pos",position);
+        padre.startActivity(intent);
     }
 
     public interface OnApartamentoListener{

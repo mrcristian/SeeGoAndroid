@@ -26,6 +26,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
+            android:onClick="@{(view)->handler.onItemClick((int)view.tag)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -107,119 +108,62 @@
                 <ImageButton
                     android:id="@+id/btnComment"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginTop="1dp"
+                    android:layout_height="0dp"
                     android:background="@android:color/transparent"
                     android:onClick="@{()->handler.clickComment()}"
+                    app:srcCompat="@drawable/ic_com2"
                     app:layout_constraintRight_toLeftOf="@+id/guideline3"
+                    android:layout_marginRight="32dp"
                     app:layout_constraintTop_toTopOf="@+id/btnLike"
-                    app:srcCompat="@mipmap/ic_comment" />
+                    android:layout_marginTop="0dp" />
 
                 <ImageButton
                     android:id="@+id/btnLike"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="0dp"
                     android:background="@android:color/transparent"
                     android:onClick="@{()->handler.clickLike()}"
-                    app:layout_constraintHorizontal_bias="0.37"
+                    app:srcCompat="@drawable/ic_fav2"
+                    android:layout_marginLeft="8dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/btnComment"
-                    app:layout_constraintTop_toBottomOf="@+id/txtSize"
-                    app:srcCompat="@mipmap/ic_favorite" />
-
-                <ImageButton
-                    android:id="@+id/btndetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{()->handler.clickDetails()}"
-                    app:layout_constraintHorizontal_bias="0.437"
-                    app:layout_constraintLeft_toLeftOf="@+id/guideline3"
-                    app:layout_constraintRight_toLeftOf="@+id/btnContact"
-                    app:layout_constraintTop_toBottomOf="@+id/txtSize"
-                    app:srcCompat="@mipmap/ic_details" />
-
-                <ImageButton
-                    android:id="@+id/btnContact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@android:color/transparent"
-                    android:onClick="@{()->handler.clickContact()}"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btndetails"
-                    app:srcCompat="@mipmap/ic_contact" />
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSize" />
 
                 <TextView
                     android:id="@+id/txtClike"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="0dp"
                     android:text='@{""+apartamento.interesados}'
                     android:textAlignment="center"
                     android:textColor="@android:color/background_light"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnLike"
+                    tools:text="22"
+                    android:layout_marginRight="0dp"
                     app:layout_constraintRight_toRightOf="@+id/btnLike"
+                    android:layout_marginLeft="0dp"
+                    app:layout_constraintLeft_toLeftOf="@+id/btnLike"
+                    android:layout_marginTop="0dp"
                     app:layout_constraintTop_toBottomOf="@+id/btnLike"
-                    app:layout_constraintVertical_bias="0.514"
-                    tools:text="22" />
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp" />
 
                 <TextView
                     android:id="@+id/txtCcomment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="16dp"
                     android:text='@{""+apartamento.comentarios.size()}'
                     android:textColor="@android:color/background_light"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnComment"
-                    app:layout_constraintRight_toRightOf="@+id/btnComment"
+                    tools:text="22"
+                    android:layout_marginTop="0dp"
                     app:layout_constraintTop_toBottomOf="@+id/btnComment"
-                    app:layout_constraintVertical_bias="0.514"
-                    tools:text="22" />
-
-                <TextView
-                    android:id="@+id/txtDetalles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
                     android:layout_marginRight="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="detalles"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/background_light"
-                    app:layout_constraintLeft_toLeftOf="@+id/btndetails"
-                    app:layout_constraintRight_toRightOf="@+id/btndetails"
-                    app:layout_constraintTop_toBottomOf="@+id/btndetails" />
-
-                <TextView
-                    android:id="@+id/txtContacto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="@+id/btnComment"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="contacto"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/background_light"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnContact"
-                    app:layout_constraintRight_toRightOf="@+id/btnContact"
-                    app:layout_constraintTop_toBottomOf="@+id/btnContact" />
+                    app:layout_constraintLeft_toLeftOf="@+id/btnComment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="16dp" />
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guideline3"

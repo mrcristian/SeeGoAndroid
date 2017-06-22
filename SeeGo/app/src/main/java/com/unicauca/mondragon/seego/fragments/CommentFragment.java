@@ -36,9 +36,12 @@ public class CommentFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_comment,container,false);
         //MUCHO OJO CON ESTE METODO
-        adapter = new ComentarioAdapter(getLayoutInflater(null), Data.getComentarios());
-        binding.recycler2.setAdapter(adapter);
-        binding.recycler2.setLayoutManager(new LinearLayoutManager(getContext()));
+        if(getArguments() != null) {
+            int pos = getArguments().getInt("AptoPos");
+            adapter = new ComentarioAdapter(getLayoutInflater(null), Data.getComentarios(pos));
+            binding.recycler2.setAdapter(adapter);
+            binding.recycler2.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
         return binding.getRoot();
     }
 

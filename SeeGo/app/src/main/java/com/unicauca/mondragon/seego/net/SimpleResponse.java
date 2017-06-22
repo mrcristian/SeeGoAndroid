@@ -8,13 +8,10 @@ import com.unicauca.mondragon.seego.models.Estudiante;
 
 public class SimpleResponse {
     boolean success;
-    //Object user;
 
     public SimpleResponse(boolean success) {
         this.success = success;
     }
-
-
     public boolean isSuccess() {
         return success;
     }

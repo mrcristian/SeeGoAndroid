@@ -18,29 +18,8 @@ public class Data {
     private static List<Comentario> comentarios;
 
     public static List<Apartamento> getApartamentos() {
-        comentarios = new ArrayList<>();
-        comentarios.add(new Comentario("Pedro", "Hola", "Ayer"));
-        comentarios.add(new Comentario("Maria", "Hola", "Hoy"));
-        if (apartamentos == null) {
-            apartamentos = new ArrayList<>();
-            apartamentos.add(new Apartamento("2020", "3213213112",
-                    "pablonuevo@gmail.com", 700000,
-                    "58ee2d16107a970011ec553d", "7",
-                    "Cra 2", "Comoda para pareja",
-                    "si", "no",
-                    "si", "si",
-                    "si", "http://www.3torress.com/img/blog/como-ahorrar-espacios-en-apartamentos.jpg",
-                    2, comentarios));
-            apartamentos.add(new Apartamento("2020", "3213213112",
-                    "pablonuevo@gmail.com", 700000,
-                    "58ee2d16107a970011ec553d", "7",
-                    "Cra 2", "Comoda para pareja",
-                    "si", "no",
-                    "si", "si",
-                    "si", "http://www.3torress.com/img/blog/como-ahorrar-espacios-en-apartamentos.jpg",
-                    4, comentarios));
-        }
-        return apartamentos;
+        return (apartamentos != null) ? apartamentos
+                : new ArrayList<Apartamento>();
     }
 
     public static Apartamento getApartamento(int pos) {
@@ -49,9 +28,20 @@ public class Data {
         }
         return null;
     }
+    public static void setApartamentos(List<Apartamento> data) {
+        apartamentos = data;
+    }
 
     public static List<Comentario> getComentarios() {
-        return comentarios;
+        return new ArrayList<Comentario>();
+    }
+
+    public static List<Comentario> getComentarios(int pos) {
+        if(apartamentos.get(pos) != null)
+        {
+            return apartamentos.get(pos).getComentarios();
+        }
+        return new ArrayList<Comentario>();
     }
 
 

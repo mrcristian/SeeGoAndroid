@@ -7,17 +7,18 @@ import com.unicauca.mondragon.seego.models.Estudiante;
  */
 
 public class RegistroResponse extends SimpleResponse {
-    boolean exists;
+    String message;
 
-    public RegistroResponse(boolean success) {
+    public RegistroResponse(boolean success,String message) {
         super(success);
+        this.message = message;
     }
 
-    public boolean isExists() {
-        return exists;
+    public String getMessage() {
+        return message;
     }
 
-    public void setExists(boolean exists) {
-        this.exists = exists;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

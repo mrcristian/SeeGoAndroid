@@ -9,4 +9,6 @@
     <string name="RegistroExitoso">Registro Exitoso</string>
     <string name="UsuarioInvalido">El usuario registrado no es valido</string>
     <string name="invalidoPassContra">No coinciden el password o contraseña</string>
+    <string name="camposvacios">algunos campos estan vacios</string>
+    <string name="datoNoEncontrado">El usuario no esta registrado</string>
 </resources>

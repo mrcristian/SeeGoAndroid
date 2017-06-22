@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class App extends Application {
-    Retrofit retrofit;
+    public Retrofit retrofit;
 
     @Override
     public void onCreate() {

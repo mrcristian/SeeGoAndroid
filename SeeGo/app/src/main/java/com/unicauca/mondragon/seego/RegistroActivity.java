@@ -44,32 +44,51 @@ public class RegistroActivity extends AppCompatActivity implements Callback<Regi
         estudiante.setCiudadOrigen(binding.txtCiudad.getText().toString());
         estudiante.setTipo("user");
 
-        Call<RegistroResponse> request = cliente.registrar(estudiante);
-        request.enqueue(this);
-
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
+        if(formularioLLeno()) {
+            Call<RegistroResponse> request = cliente.registrar(estudiante);
+            request.enqueue(this);
+        }
+        else {
+            Toast.makeText(this, R.string.camposvacios,Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public void onResponse(Call<RegistroResponse> call, Response<RegistroResponse> response) {
-        if(response.isSuccessful()){
-            RegistroResponse registroResponse = response.body();
-            if(registroResponse.isExists()){
-                Toast.makeText(this, R.string.RegistroExitoso, Toast.LENGTH_SHORT).show();
-                finish();
-            }else
-            {
-                Toast.makeText(this, R.string.UsuarioInvalido,Toast.LENGTH_SHORT).show();
+
+            if(response.isSuccessful()){
+                RegistroResponse registroResponse = response.body();
+                if(registroResponse.isSuccess()){
+                    Toast.makeText(this, R.string.RegistroExitoso, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else
+                {
+                    Toast.makeText(this, R.string.UsuarioInvalido,Toast.LENGTH_SHORT).show();
+                }
             }
-        }
-        else{
-            Toast.makeText(this, R.string.errorRegistroUsuario,Toast.LENGTH_SHORT).show();
-        }
+            else{
+                Toast.makeText(this, R.string.errorRegistroUsuario,Toast.LENGTH_SHORT).show();
+            }
     }
 
     @Override
     public void onFailure(Call<RegistroResponse> call, Throwable t) {
         Toast.makeText(this, R.string.errorServidor,Toast.LENGTH_SHORT).show();
+    }
+    private boolean formularioLLeno(){
+        if(binding.txtUsuario.getText().toString().equals("")||
+                binding.txtContrasenia.getText().toString().equals("")||
+                binding.txtNombre.getText().toString().equals("")||
+                binding.txtApellido.getText().toString().equals("")||
+                binding.txtTelefono.getText().toString().equals("")||
+                binding.txtIdentificacion.getText().toString().equals("")||
+                binding.txtDireccion.getText().toString().equals("")||
+                binding.txtCiudad.getText().toString().equals(""))
+            return false;
+        else{
+            return true;
+        }
     }
 }

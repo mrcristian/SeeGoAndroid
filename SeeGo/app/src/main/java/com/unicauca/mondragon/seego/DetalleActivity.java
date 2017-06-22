@@ -17,6 +17,7 @@ public class DetalleActivity extends AppCompatActivity  {
 
     ActivityDetalleBinding binding;
     ComentarioAdapter adapter;
+    private int _pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +26,30 @@ public class DetalleActivity extends AppCompatActivity  {
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter = new ComentarioAdapter(getLayoutInflater(), Data.getComentarios());
+
+
+        _pos = getIntent().getIntExtra("pos",-1);
+        if(_pos >= 0) {
+            Apartamento apartamento = Data.getApartamento(_pos);
+            if(apartamento != null)
+            {
+                binding.setApartamento(apartamento);
+                adapter = new ComentarioAdapter(getLayoutInflater(), apartamento.getComentarios());
+            }
+
+        }
+
         putFragment(R.id.container2, CommentFragment.instance());
 
-
-        Apartamento apartamento = Data.getApartamento(0);
-        binding.setApartamento(apartamento);
 /*        RecyclerView v = (RecyclerView) findViewById(R.id.reciclerComment);
         v.setAdapter(adapter);
 
         setContentView(R.layout.activity_detalle);*/
     }
     public void putFragment(int container, Fragment fragment){
+        Bundle bundle = new Bundle();
+        bundle.putInt("AptoPos", _pos);
+        fragment.setArguments(bundle);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(container,fragment);
         ft.commit();
